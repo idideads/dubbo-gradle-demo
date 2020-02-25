@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+dependencies {
+    compile project(':interface')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+            {
+        // 排除tomcat（后面引入jetty）
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+        // 排除JackJason（改用FastJason作为默认jason解析,需要额外写一个配置类注入，参考SpingBootFastJsonConfig.java）
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//
+//    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.1'
+//    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
+//    compile group: 'com.alibaba', name: 'druid', version: '1.1.21'
+//    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+
+//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//    }
+}
+
+//test {
+//    useJUnitPlatform()
+//}

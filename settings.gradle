@@ -1,0 +1,6 @@
+rootProject.name = 'dubbo-gradle-demo'
+include 'interface'
+include 'provider'
+include 'web'
+include 'consumer'
+

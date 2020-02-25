@@ -1,0 +1,27 @@
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: "maven"
+    apply plugin: "idea"
+
+    group 'com.test.dubbodemo'
+    version '1.0'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+        mavenCentral()
+    }
+}
+
+subprojects {
+    dependencies {
+        compile group: 'org.apache.dubbo', name: 'dubbo-spring-boot-starter', version: '2.7.5'
+//        compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.5.6' //注意不能加这个依赖，这个依赖引入的话反而会报错zookeeper not connected
+        compile group: 'org.apache.curator', name: 'curator-recipes', version: '4.2.0'
+//        compile group: 'org.apache.curator', name: 'curator-framework', version: '4.2.0'
+        testCompile group: 'junit', name: 'junit', version: '4.13'
+    }
+}
